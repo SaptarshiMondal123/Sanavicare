@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sanavi Health & Wellness Design System
+All colors MUST be HSL. Vibrant gradients, glassmorphism, and playful animations.
+*/
+
+@layer base {
+  :root {
+    /* Vibrant gradient backgrounds - never white/black */
+    --background: 195 100% 85%;
+    --background-gradient: linear-gradient(135deg, hsl(195 100% 85%) 0%, hsl(260 50% 90%) 100%);
+    --foreground: 220 25% 25%;
+
+    /* Glassmorphism cards */
+    --card: 0 0% 100% / 0.12;
+    --card-backdrop: blur(12px);
+    --card-foreground: 220 25% 25%;
+    --card-shadow: 0 8px 30px hsl(220 43% 21% / 0.14);
+
+    --popover: 0 0% 100% / 0.12;
+    --popover-backdrop: blur(12px);
+    --popover-foreground: 220 25% 25%;
+
+    /* Primary: Teal to Purple gradient */
+    --primary: 195 100% 65%;
+    --primary-end: 260 100% 65%;
+    --primary-gradient: linear-gradient(135deg, hsl(195 100% 65%) 0%, hsl(260 100% 65%) 100%);
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Red to Orange gradient */
+    --secondary: 0 85% 70%;
+    --secondary-end: 25 100% 60%;
+    --secondary-gradient: linear-gradient(135deg, hsl(0 85% 70%) 0%, hsl(25 100% 60%) 100%);
+    --secondary-foreground: 0 0% 100%;
+
+    /* Accent: Pink to Purple gradient */
+    --accent: 340 100% 73%;
+    --accent-end: 270 65% 68%;
+    --accent-gradient: linear-gradient(135deg, hsl(340 100% 73%) 0%, hsl(270 65% 68%) 100%);
+    --accent-foreground: 0 0% 100%;
+
+    /* Alert: Red to Orange gradient */
+    --alert: 0 100% 60%;
+    --alert-end: 30 100% 50%;
+    --alert-gradient: linear-gradient(135deg, hsl(0 100% 60%) 0%, hsl(30 100% 50%) 100%);
+    --alert-foreground: 0 0% 100%;
+
+    /* Muted and interactive states */
+    --muted: 220 25% 90%;
+    --muted-foreground: 220 25% 45%;
+
+    --border: 220 25% 80%;
+    --input: 220 25% 90%;
+    --ring: 195 100% 65%;
+
+    --radius: 1rem;
+
+    /* Animation variables */
+    --transition-spring: cubic-bezier(0.4, 0, 0.2, 1);
+    --hover-scale: 1.03;
+
+    /* Success state */
+    --success: 140 80% 50%;
+    --success-gradient: linear-gradient(135deg, hsl(140 80% 50%) 0%, hsl(120 70% 45%) 100%);
+    --success-foreground: 0 0% 100%;
+
+    /* Sidebar (maintaining design) */
+    --sidebar-background: 195 100% 85%;
+    --sidebar-foreground: 220 25% 25%;
+    --sidebar-primary: 195 100% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 25% 90%;
+    --sidebar-accent-foreground: 220 25% 25%;
+    --sidebar-border: 220 25% 80%;
+    --sidebar-ring: 195 100% 65%;
+  }
+
+  /* No dark mode - only vibrant mode */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground font-nunito;
+    background: var(--background-gradient);
+    min-height: 100vh;
+  }
+
+  /* Glassmorphism utility classes */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--card-shadow);
+  }
+
+  /* Animation utilities */
+  .spring-hover {
+    transition: transform 0.2s var(--transition-spring);
+  }
+  
+  .spring-hover:hover {
+    transform: scale(var(--hover-scale));
+  }
+
+  /* Reduced motion respect */
+  @media (prefers-reduced-motion: reduce) {
+    .spring-hover {
+      transition: none;
+    }
+    .spring-hover:hover {
+      transform: none;
+    }
+  }
+
+  /* Focus rings for accessibility */
+  .focus-ring:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Gradient backgrounds */
+  .bg-primary-gradient {
+    background: var(--primary-gradient);
+  }
+  
+  .bg-secondary-gradient {
+    background: var(--secondary-gradient);
+  }
+  
+  .bg-accent-gradient {
+    background: var(--accent-gradient);
+  }
+  
+  .bg-alert-gradient {
+    background: var(--alert-gradient);
+  }
+  
+  .bg-success-gradient {
+    background: var(--success-gradient);
+  }
+
+  /* Mascot floating animation */
+  .mascot-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Button hover animations */
+  .btn-spring {
+    transition: all 0.2s var(--transition-spring);
+  }
+  
+  .btn-spring:hover {
+    transform: scale(1.03);
+  }
+}
