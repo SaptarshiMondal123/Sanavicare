@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Sanavicare Banner](public/preview.png)
+![Sanavicare Banner](public/preview1.png)
 
 **Your friendly AI companion for fitness, nutrition, disease awareness, and mental health**
 
